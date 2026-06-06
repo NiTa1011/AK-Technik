@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function() {
+        try {
+          var cachedTheme = localStorage.getItem("active-theme-data");
+          if (cachedTheme) {
+            var theme = JSON.parse(cachedTheme);
+            var root = document.documentElement;
+            if (theme && theme.colors) {
+              Object.keys(theme.colors).forEach(function(key) {
+                root.style.setProperty("--" + key, theme.colors[key]);
+              });
+            }
+            if (theme.backgroundPattern && theme.backgroundPattern !== "none") {
+              root.style.setProperty("--background-pattern", theme.backgroundPattern);
+            } else {
+              root.style.setProperty("--background-pattern", "none");
+            }
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>U-Disco Musikwünsche</title>
+    <meta name="description" content="Gib deinen Musikwunsch für die U-Disco ab!">
+    <meta name="author" content="U-Disco" />
+
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:title" content="U-Disco Musikwünsche">
+  <meta name="twitter:title" content="U-Disco Musikwünsche">
+  <meta property="og:description" content="Gib deinen Musikwunsch für die U-Disco ab!">
+  <meta name="twitter:description" content="Gib deinen Musikwunsch für die U-Disco ab!">
+  <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/0OpM3eDvkVaaisIrQRbTuWyOwbO2/uploads/1760733978969-Bildschirmfoto 2025-10-17 um 22.46.08.png">
+</head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

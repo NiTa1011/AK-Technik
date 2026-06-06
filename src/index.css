@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 280 60% 96%;
+    --foreground: 240 10% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 25%;
+
+    --primary: 271 81% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 280 60% 94%;
+    --secondary-foreground: 271 81% 56%;
+
+    --muted: 280 40% 92%;
+    --muted-foreground: 240 5% 50%;
+
+    --accent: 330 81% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 280 30% 88%;
+    --input: 280 30% 90%;
+    --ring: 271 81% 56%;
+
+    --radius: 1rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(271 81% 56%), hsl(330 81% 60%));
+    --gradient-button: linear-gradient(90deg, hsl(271 81% 56%), hsl(330 81% 60%));
+    --shadow-card: 0 10px 40px -10px hsl(271 81% 56% / 0.15);
+    --shadow-input: 0 0 0 3px hsl(271 81% 56% / 0.1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 13%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 13%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 271 81% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 10% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 240 10% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 330 81% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 20%;
+    --ring: 271 81% 56%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: var(--background-pattern, none);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  .dark .glass-card {
+    background: rgba(20, 20, 25, 0.55);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-input {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .dark .glass-input {
+    background: rgba(20, 20, 25, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-input:focus {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.15);
+  }
+  
+  .dark .glass-input:focus {
+    background: rgba(20, 20, 25, 0.75);
+    border-color: hsl(var(--primary) / 0.6);
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.2);
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s infinite ease-in-out;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+  }
+}
